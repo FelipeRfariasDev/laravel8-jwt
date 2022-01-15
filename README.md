@@ -1,5 +1,7 @@
 git clone https://github.com/feliperodriguesfariasphp/laravel8-jwt.git
 
+cd laravel8-jwt
+
 cp .env_example .env
 
 Altere os dados de conexão do banco de dados no arquivo .env
