@@ -1,0 +1,184 @@
+{
+	"info": {
+		"_postman_id": "c0d88bef-3634-45a1-873e-8d25c674c326",
+		"name": "laravel8-jwt",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cadastrar Novo Usuário",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Felipe Rodrigues Farias\",\n\t\"email\":\"felipe.farias.php@gmail.com\",\n\t\"password\":\"senha123\",\n\t\"job_title\": \"Gerente administrativo\"\n}"
+				},
+				"url": {
+					"raw": "{{API_URL}}/new/user",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"new",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"felipe.farias.php@gmail.com\",\n\t\"password\":\"senha123\"\n}"
+				},
+				"url": {
+					"raw": "{{API_URL}}/login",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastrar um post",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY0MjM3NDU2NiwiZXhwIjoxNjQyMzc0NjI2LCJuYmYiOjE2NDIzNzQ1NjYsImp0aSI6Ijhlb2M4bzZwckdWb2JkRTkiLCJzdWIiOjEsInBydiI6IjMyOTYzYTYwNmMyZjE3MWYxYzE0MzMxZTc2OTc2NmNkNTkxMmVkMTUifQ.wBw2VdZLuPQwTi_6rfqdhxDtdi9ysUaqBIld4aMaK54"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"titulo\":\"novo titulo autenticado2\",\n\t\"descricao\":\"nova descrição autenticada2\"\n}"
+				},
+				"url": {
+					"raw": "{{API_URL}}/posts",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar todos os posts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_URL}}/posts",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar um post pelo id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_URL}}/posts/3",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"posts",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar um post",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY0MjM3MzUzNSwiZXhwIjoxNjQyMzczNTk1LCJuYmYiOjE2NDIzNzM1MzUsImp0aSI6IlF4WjVlMllBVWMxWFBOOFEiLCJzdWIiOjEsInBydiI6IjMyOTYzYTYwNmMyZjE3MWYxYzE0MzMxZTc2OTc2NmNkNTkxMmVkMTUifQ.a1LIB9ikzeAqvy2w_67q-P3N86GY4Wdj3H9oe4Vh9wk"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\":1,\n\t\"titulo\":\"titulo alterado\",\n\t\"descricao\":\"descrição alterada\"\n}"
+				},
+				"url": {
+					"raw": "{{API_URL}}/posts",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Excluir um post",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9wb3N0c1wvMSIsImlhdCI6MTY0MjM3MzUzNSwiZXhwIjoxNjQyMzczNjU4LCJuYmYiOjE2NDIzNzM1OTgsImp0aSI6IlV2cWZYclZHTGhGSjNpdDUiLCJzdWIiOjEsInBydiI6IjMyOTYzYTYwNmMyZjE3MWYxYzE0MzMxZTc2OTc2NmNkNTkxMmVkMTUifQ.Hqx3Af0ahtwcGeijlG4wemoW1unnGnc2ZaINu90t_Rc"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{API_URL}}/posts/1",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"posts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

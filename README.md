@@ -14,8 +14,6 @@ php artisan jwt:secret
 
 php artisan migrate
 
-php artisan db:seed
-
 php artisan serve
 
 Importe no postman o arquivo que está na raiz do projeto: laravel8-jwt.postman_collection.json
