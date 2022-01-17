@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Posts;
+use App\Models\Post;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
-class PostsController extends Controller
+class PostController extends Controller
 {
     public function index(){
-        $posts = Posts::paginate(15);
+        $posts = Post::paginate(15);
         return response()->json([
             "posts"      =>  $posts
         ]);
     }
 
     public function store(Request $request){
-        $post = new Posts();
+        $post = new Post();
         $post->titulo = $request->input('titulo');
         $post->descricao = $request->input('descricao');
 
@@ -42,7 +42,7 @@ class PostsController extends Controller
 
         $id = $request->input('id');
 
-        $post = Posts::find($id);
+        $post = Post::find($id);
 
         if(!$post) {
             return response()->json([
@@ -75,7 +75,7 @@ class PostsController extends Controller
 
     public function show($id){
 
-        $posts = Posts::find($id);
+        $posts = Post::find($id);
         if(!$posts) {
             return response()->json([
                 "error"    =>  true,
@@ -92,7 +92,7 @@ class PostsController extends Controller
 
     public function destroy($id){
 
-        $posts = Posts::find($id);
+        $posts = Post::find($id);
         if(!$posts) {
             return response()->json([
                 "error"    =>  true,

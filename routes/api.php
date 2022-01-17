@@ -3,13 +3,13 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\UsersController;
-use App\Http\Controllers\PostsController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
 
 Route::post('auth/login', [AuthController::class, 'login'])->name('auth.login');
-Route::post('auth/new/user', [UsersController::class, 'store'])->name('auth.new.user');
-Route::get('auth/posts', [PostsController::class, 'index'])->name('auth.post.index');
-Route::get('auth/posts/{id}', [PostsController::class, 'show'])->name('auth.post.show');
+Route::post('auth/new/user', [UserController::class, 'store'])->name('auth.new.user');
+Route::get('auth/posts', [PostController::class, 'index'])->name('auth.post.index');
+Route::get('auth/posts/{id}', [PostController::class, 'show'])->name('auth.post.show');
 
 Route::group([ 'middleware' => 'auth-jwt', 'prefix' => 'auth' ], function () {
 
@@ -17,8 +17,8 @@ Route::group([ 'middleware' => 'auth-jwt', 'prefix' => 'auth' ], function () {
     Route::post('refresh', [AuthController::class, 'refresh'])->name('auth.refresh');
     Route::post('me', [AuthController::class, 'me'])->name('auth.me');
 
-    Route::post('posts', [PostsController::class, 'store'])->name('auth.posts.store');
-    Route::put('posts', [PostsController::class, 'update'])->name('auth.posts.update');
-    Route::delete('posts/{id}', [PostsController::class, 'destroy'])->name('auth.posts.destroy');
+    Route::post('posts', [PostController::class, 'store'])->name('auth.posts.store');
+    Route::put('posts', [PostController::class, 'update'])->name('auth.posts.update');
+    Route::delete('posts/{id}', [PostController::class, 'destroy'])->name('auth.posts.destroy');
 
 });

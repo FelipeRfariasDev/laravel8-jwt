@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Users;
+use App\Models\User;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
-class UsersController extends Controller
+class UserController extends Controller
 {
     public function store(Request $request){
 
-        $user = new Users();
+        $user = new User();
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
