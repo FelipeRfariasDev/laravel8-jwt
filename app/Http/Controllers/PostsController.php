@@ -83,6 +83,11 @@ class PostsController extends Controller
                 "message"   => "id $id não foi encontrado",
             ], 404);
         }
+        return response()->json([
+            "error"    =>  false,
+            "success"  =>  true,
+            "post"     => $posts,
+        ]);
     }
 
     public function destroy($id){

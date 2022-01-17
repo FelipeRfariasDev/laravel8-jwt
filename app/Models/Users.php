@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class Employee extends Authenticatable implements JWTSubject
+class Users extends Authenticatable implements JWTSubject
 {
     use HasFactory, Notifiable;
 
-    protected $table = 'employee';
+    protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.
@@ -21,8 +21,7 @@ class Employee extends Authenticatable implements JWTSubject
     protected $fillable = [
         'name',
         'email',
-        'password',
-        'job_title'
+        'password'
     ];
 
     /**

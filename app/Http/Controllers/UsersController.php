@@ -2,26 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Employee;
+use App\Models\Users;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
-class EmployeeController extends Controller
+class UsersController extends Controller
 {
     public function store(Request $request){
 
-        $employee = new Employee();
-        $employee->name = $request->input('name');
-        $employee->email = $request->input('email');
-        $employee->password = bcrypt($request->input('password'));
-        $employee->job_title = bcrypt($request->input('Gerente administrativo'));
+        $user = new Users();
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = bcrypt($request->input('password'));
 
         try {
-            if($employee->save()){
+            if($user->save()){
                 return response()->json([
                     "status"    =>  true,
                     "message"   =>  "Inserido com sucesso",
-                    "user"      =>  $employee
+                    "user"      =>  $user
                 ], 201);
             }
         } catch (QueryException $e){

@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         /*
-        \App\Models\Employee::create([
+        \App\Models\Users::create([
             'name' => 'Usuário de teste',
             'email' => "usuario@teste.com.br",
             'password' => bcrypt('senha123'),

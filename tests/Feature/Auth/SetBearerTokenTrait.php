@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Auth;
 
-use App\Models\Employee;
+use App\Models\Users;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 trait SetBearerTokenTrait
@@ -12,7 +12,7 @@ trait SetBearerTokenTrait
 
     public function getToken() : array
     {
-        $user = Employee::where('email', config('env.API_USER_EMAIL'))->first();
+        $user = Users::where('email', config('env.API_USER_EMAIL'))->first();
         $this->token = JWTAuth::fromUser($user);
 
         return [

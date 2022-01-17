@@ -21,7 +21,7 @@ class AuthController extends Controller
     }
 
     /**
-     * Get the authenticated User.
+     * Get the authenticated Users.
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -63,8 +63,8 @@ class AuthController extends Controller
     {
         return response()->json([
             'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 3600
+            'token_type' => 'Bearer',
+            'expires_in' => auth()->factory()->getTTL() * 36000
         ]);
     }
 }

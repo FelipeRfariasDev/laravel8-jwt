@@ -43,13 +43,13 @@ return [
 
         'api' => [
             'driver' => 'jwt',
-            'provider' => 'employees'
+            'provider' => 'users'
         ],
     ],
 
     /*
     |--------------------------------------------------------------------------
-    | User Providers
+    | Users Providers
     |--------------------------------------------------------------------------
     |
     | All authentication drivers have a user provider. This defines how the
@@ -67,12 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
-        ],
-
-        'employees' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Employee::class,
+            'model' => App\Models\Users::class,
         ],
 
         // 'users' => [
