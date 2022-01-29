@@ -8,7 +8,7 @@ use App\Http\Controllers\PostController;
 
 Route::post('auth/login', [AuthController::class, 'login'])->name('auth.login');
 Route::post('auth/new/user', [UserController::class, 'store'])->name('auth.new.user');
-
+//Route::post('auth/logout', [AuthController::class, 'logout'])->name('auth.logout');
 /*
 Route::get('auth/posts', [PostController::class, 'index'])->name('auth.post.index');
 Route::get('auth/posts/{id}', [PostController::class, 'show'])->name('auth.post.show');
