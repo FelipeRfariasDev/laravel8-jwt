@@ -61,10 +61,23 @@ class AuthController extends Controller
      */
     protected function respondWithToken($token)
     {
+        $dateTime = new \DateTime();
+
+        $dateTimeInitial = $dateTime->setTimestamp($dateTime->getTimestamp());
+        $dateTimeTnitialFormatada = $dateTimeInitial->format('Y-m-d H:i:s');
+
+        $dataTimeFinal = $dateTime->setTimestamp($dateTime->getTimestamp()+3600);
+        $dataTimeFinalFormatada = $dataTimeFinal->format('Y-m-d H:i:s');
+
         return response()->json([
-            'access_token' => $token,
-            'token_type' => 'Bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
+            'accessToken' => $token,
+            'tokenType' => 'Bearer',
+            'expiresInSeconds' => auth()->factory()->getTTL() * 3600,
+            'expiresInMinutes' => 60,
+            'dateTimeInitial' => $dateTimeTnitialFormatada,
+            'dataTimeFinal' => $dataTimeFinalFormatada,
+            'dateTimeStampInitial' => $dateTime->getTimestamp(),
+            'dateTimeStampFinal' => $dateTime->getTimestamp()+3600
         ]);
     }
 }
