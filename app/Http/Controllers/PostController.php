@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     public function index(){
-        $posts = Post::paginate(15);
+        //$posts = Post::paginate(15);
+        $posts = Post::all();
         return response()->json([
             "posts"      =>  $posts
         ]);
@@ -23,15 +24,13 @@ class PostController extends Controller
         try {
             if($post->save()){
                 return response()->json([
-                    "error"    =>  false,
-                    "success"    =>  true,
+                    "success"   =>  true,
                     "message"   =>  "Inserido com sucesso",
                     "post"      =>  $post
                 ], 201);
             }
         } catch (QueryException $e){
             return response()->json([
-                "error"    =>  true,
                 "success"    =>  false,
                 "message"   =>  $e->getMessage()
             ]);
@@ -46,7 +45,6 @@ class PostController extends Controller
 
         if(!$post) {
             return response()->json([
-                "error"    =>  true,
                 "success"    =>  false,
                 "message"   => "id $id não foi encontrado",
             ], 404);
@@ -58,7 +56,6 @@ class PostController extends Controller
         try {
             if($post->save()){
                 return response()->json([
-                    "error"    =>  false,
                     "success"    =>  true,
                     "message"   =>  "Atualizado com sucesso",
                     "post"      =>  $post
@@ -66,7 +63,6 @@ class PostController extends Controller
             }
         } catch (QueryException $e){
             return response()->json([
-                "error"    =>  true,
                 "success"    =>  false,
                 "message"   =>  $e->getMessage()
             ]);
@@ -78,13 +74,11 @@ class PostController extends Controller
         $posts = Post::find($id);
         if(!$posts) {
             return response()->json([
-                "error"    =>  true,
                 "success"    =>  false,
                 "message"   => "id $id não foi encontrado",
             ], 404);
         }
         return response()->json([
-            "error"    =>  false,
             "success"  =>  true,
             "post"     => $posts,
         ]);
@@ -95,14 +89,12 @@ class PostController extends Controller
         $posts = Post::find($id);
         if(!$posts) {
             return response()->json([
-                "error"    =>  true,
                 "success"    =>  false,
                 "message"   => "id $id não foi encontrado",
             ], 404);
         }
         if($posts->delete()){
             return response()->json([
-                "error"    =>  false,
                 "success"    =>  true,
                 "message" => "Post $id removido com sucesso"
             ]);
