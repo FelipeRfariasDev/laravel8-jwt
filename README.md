@@ -16,9 +16,14 @@ php artisan jwt:secret
 
 php artisan migrate
 
+php artisan migrate:refresh
+
 php artisan serve
 
+Link no postman: https://www.getpostman.com/collections/330004a14d7f020d1a89
+
 Importe no postman
+
 <a href="https://github.com/feliperodriguesfariasphp/laravel8-jwt/blob/main/postman/Introdu%C3%A7%C3%A3o%20-%20Importar%20json%20postman/laravel8-jwt.postman_collection.json">🔗 laravel8-jwt.postman_collection.json</a>
 
 ![alt text](https://github.com/feliperodriguesfariasphp/laravel8-jwt/blob/main/postman/Introdu%C3%A7%C3%A3o%20-%20Importar%20json%20postman/Importar%20arquivo%20json%20postman.png?raw=true)

@@ -17,9 +17,21 @@ class PostController extends Controller
     }
 
     public function store(Request $request){
+
         $post = new Post();
-        $post->titulo = $request->input('titulo');
-        $post->descricao = $request->input('descricao');
+        $post->titulo       = $request->input('titulo');
+        $post->descricao    = $request->input('descricao');
+
+        $imagem = $request->file('imagem');
+        if($imagem){
+            $app_url = env('APP_URL');
+            $diretorio_imagens = "uploadsImgs";
+            $post->imagem       = $app_url.$diretorio_imagens."/".$imagem->getClientOriginalName();
+            $imagem_temporario = $imagem->getPath()."\\".$imagem->getFilename();
+            $uploaddir = "..\\public\\".$diretorio_imagens."\\";
+            $uploadfile = $uploaddir . basename($imagem->getClientOriginalName());
+            move_uploaded_file($imagem_temporario, $uploadfile);
+        }
 
         try {
             if($post->save()){

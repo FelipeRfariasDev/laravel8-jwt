@@ -17,6 +17,7 @@ class Posts extends Migration
             $table->id();
             $table->string('titulo','100');
             $table->text('descricao');
+            $table->string('imagem','200')->nullable();
             $table->timestamps();
         });
     }
