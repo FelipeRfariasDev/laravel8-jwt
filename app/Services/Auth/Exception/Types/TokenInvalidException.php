@@ -9,7 +9,9 @@ class TokenInvalidException implements IExceptionResponse
     public function response()
     {
         return response()->json([
-            'response' => 'Token invalido'
+            "success"    =>  false,
+            "message" => "Token invalido",
+            "status" => 403
         ], 403);
     }
 }

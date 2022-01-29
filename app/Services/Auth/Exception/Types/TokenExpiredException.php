@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Services\Auth\Exception\Types;
 
@@ -12,10 +12,12 @@ class TokenExpiredException implements IExceptionResponse
         try {
 
             $refreshed = JWTAuth::refresh(JWTAuth::getToken());
-    
+
             return response()->json([
-                'message' => 'Token expirado',
-                'refreshed_token' => $refreshed
+                "success"    =>  false,
+                "message" => "Token expirado",
+                "refreshed_token" => $refreshed,
+                "status" => 401
             ], 401);
 
         } catch (\Exception $e) {

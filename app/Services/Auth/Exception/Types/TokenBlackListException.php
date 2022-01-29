@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Services\Auth\Exception\Types;
 
@@ -9,7 +9,9 @@ class TokenBlackListException implements IExceptionResponse
     public function response()
     {
         return response()->json([
-            'response' => 'O Token entrou na black list'
-        ], 403);
+            "success"    =>  false,
+            "message"   =>  "O Token entrou na black list",
+            "status" => 403
+        ],403);
     }
 }

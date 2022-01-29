@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Services\Auth\Exception\Types;
 
@@ -9,7 +9,9 @@ class GenericException implements IExceptionResponse
     public function response()
     {
         return response()->json([
-            'response' => 'Erro não mapeado'
+            "success" =>  false,
+            "message" =>  "Erro não mapeado",
+            "status"  => 400
         ], 400);
     }
 }

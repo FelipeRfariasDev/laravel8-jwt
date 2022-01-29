@@ -9,7 +9,9 @@ class JWTException implements IExceptionResponse
     public function response()
     {
         return response()->json([
-            'response' => 'Favor informar o Token'
+            "success" =>  false,
+            "message" =>  "Favor informar o Token",
+            "status"  => 400
         ], 400);
     }
 }
