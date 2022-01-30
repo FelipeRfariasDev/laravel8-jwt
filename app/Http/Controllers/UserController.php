@@ -18,13 +18,17 @@ class UserController extends Controller
         try {
             if($user->save()){
                 return response()->json([
-                    "status"    =>  true,
+                    "success"    =>  true,
                     "message"   =>  "Inserido com sucesso",
                     "user"      =>  $user
                 ], 201);
             }
         } catch (QueryException $e){
-            return response()->json($e->getMessage());
+
+            return response()->json([
+                "success"   =>  false,
+                "message"   =>  $e->getMessage()
+            ]);
         }
 
     }
