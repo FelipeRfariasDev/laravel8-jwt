@@ -103,7 +103,8 @@ class PostController extends Controller
 
     public function show($id){
 
-        $posts = Post::find($id);
+        $posts = Post::with(['Comentarios'])->find($id);
+
         if(!$posts) {
             return response()->json([
                 "success"    =>  false,
