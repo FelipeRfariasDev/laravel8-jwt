@@ -10,7 +10,27 @@ class PostController extends Controller
 {
     public function index(){
         //$posts = Post::paginate(15);
-        $posts = Post::all();
+        //$posts = Post::all();
+
+        //$posts = Post::with(['Comentarios'])->paginate(15);
+        $posts = Post::with(['Comentarios'])->get();
+
+        //$comentarios = Post::find(1)->Comentarios;
+        //print_r($comentarios);
+        //exit;
+
+        /*
+        foreach($posts as $post){
+            print_r($post->titulo);
+
+            //print_r($post->comentario);
+
+            foreach($post->comentario as $comentario){
+                print_r($comentario->descricao);
+            }
+        }
+        exit;
+        */
         return response()->json([
             "posts"      =>  $posts
         ]);
