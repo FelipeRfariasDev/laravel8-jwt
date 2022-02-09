@@ -47,25 +47,13 @@ class PostController extends Controller
             $imagem_nome_original = $imagem->getClientOriginalName();
             $app_url = env('APP_URL');
             $diretorio_imagens = "uploadsImgs";
-            $post->imagem       = $app_url.$diretorio_imagens."/".$imagem_nome_original;
-            $imagem_temporario = $imagem->getPath()."/".$imagem->getFilename();
-            $uploaddir = $diretorio_imagens."/";
-            $uploadfile = $uploaddir . $imagem_nome_original;
-            move_uploaded_file($imagem_temporario, $uploadfile);
+
+            $destino_arquivo = $diretorio_imagens."/". $imagem_nome_original;
+            if(move_uploaded_file($imagem->getPathname(), $destino_arquivo)){
+                $post->imagem       = $app_url.$diretorio_imagens."/".$imagem_nome_original;
+            }
         }
 
-        /*
-        $imagem = $_FILES["imagem"];
-        if($imagem){
-            $imagem_nome_original = $imagem["name"];
-            $app_url = env('APP_URL');
-            $diretorio_imagens = "uploadsImgs";
-            $post->imagem       = $app_url.$diretorio_imagens."/".$imagem_nome_original;
-
-            $uploaddir = $diretorio_imagens."/";
-            $uploadfile = $uploaddir . $imagem_nome_original;
-            move_uploaded_file($imagem["tmp_name"], $uploadfile);
-        }*/
         try {
             if($post->save()){
                 return response()->json([
