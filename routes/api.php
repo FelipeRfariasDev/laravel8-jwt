@@ -25,7 +25,7 @@ Route::get('auth/posts', [PostController::class, 'index'])->name('auth.post.inde
 Route::get('auth/comentarios', [ComentarioController::class, 'index'])->name('auth.comentarios.index');
 Route::post('auth/comentarios', [ComentarioController::class, 'store'])->name('auth.comentarios.store');
 */
-Route::post('auth/posts', [PostController::class, 'store'])->name('auth.posts.store');
+//Route::post('auth/posts', [PostController::class, 'store'])->name('auth.posts.store');
 
 Route::group([ 'middleware' => 'auth-jwt', 'prefix' => 'auth' ], function () {
     Route::post('logout', [AuthController::class, 'logout'])->name('auth.logout');
@@ -36,7 +36,7 @@ Route::group([ 'middleware' => 'auth-jwt', 'prefix' => 'auth' ], function () {
     Route::get('posts', [PostController::class, 'index'])->name('auth.post.index');
     Route::get('posts/{id}', [PostController::class, 'show'])->name('auth.post.show');
 
-    //Route::post('posts', [PostController::class, 'store'])->name('auth.posts.store');
+    Route::post('posts', [PostController::class, 'store'])->name('auth.posts.store');
     Route::put('posts', [PostController::class, 'update'])->name('auth.posts.update');
     Route::delete('posts/{id}', [PostController::class, 'destroy'])->name('auth.posts.destroy');
 
