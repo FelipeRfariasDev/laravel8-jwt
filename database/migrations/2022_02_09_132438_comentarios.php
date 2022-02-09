@@ -13,7 +13,7 @@ class Comentarios extends Migration
      */
     public function up()
     {
-        Schema::table('comentarios', function (Blueprint $table) {
+        Schema::create('comentarios', function (Blueprint $table) {
             $table->id();
             $table->text('descricao');
             $table->integer('post_id');
