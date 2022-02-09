@@ -48,7 +48,7 @@ class PostController extends Controller
             $diretorio_imagens = "uploadsImgs";
             $post->imagem       = $app_url.$diretorio_imagens."/".$imagem->getClientOriginalName();
             $imagem_temporario = $imagem->getPath()."\\".$imagem->getFilename();
-            $uploaddir = "..\\public_html\\".$diretorio_imagens."\\";
+            $uploaddir = "..\\public\\".$diretorio_imagens."\\";
             $uploadfile = $uploaddir . basename($imagem->getClientOriginalName());
             move_uploaded_file($imagem_temporario, $uploadfile);
         }
