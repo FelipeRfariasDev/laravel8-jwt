@@ -21,7 +21,7 @@ return [
     | `php artisan jwt:secret`
     |
     | Note: This will be used for Symmetric algorithms only (HMAC),
-    | since RSA and ECDSA use a private/public key combo (See below).
+    | since RSA and ECDSA use a private/public_html key combo (See below).
     |
     */
 
@@ -34,7 +34,7 @@ return [
     |
     | The algorithm you are using, will determine whether your tokens are
     | signed with a random string (defined in `JWT_SECRET`) or using the
-    | following public & private keys.
+    | following public_html & private keys.
     |
     | Symmetric Algorithms:
     | HS256, HS384 & HS512 will use `JWT_SECRET`.
@@ -51,13 +51,13 @@ return [
         | Public Key
         |--------------------------------------------------------------------------
         |
-        | A path or resource to your public key.
+        | A path or resource to your public_html key.
         |
-        | E.g. 'file://path/to/public/key'
+        | E.g. 'file://path/to/public_html/key'
         |
         */
 
-        'public' => env('JWT_PUBLIC_KEY'),
+        'public_html' => env('JWT_PUBLIC_KEY'),
 
         /*
         |--------------------------------------------------------------------------
