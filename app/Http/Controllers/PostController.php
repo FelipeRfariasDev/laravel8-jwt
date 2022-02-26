@@ -12,8 +12,8 @@ class PostController extends Controller
         //$posts = Post::paginate(15);
         //$posts = Post::all();
 
-        //$posts = Post::with(['Comentarios'])->paginate(15);
-        $posts = Post::with(['Comentarios'])->get();
+        $posts = Post::with(['Comentarios'])->paginate(3);
+        //$posts = Post::with(['Comentarios'])->get();
 
         //$comentarios = Post::find(1)->Comentarios;
         //print_r($comentarios);
