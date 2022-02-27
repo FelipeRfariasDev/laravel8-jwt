@@ -8,14 +8,7 @@ use Illuminate\Http\Request;
 
 class ComentarioController extends Controller
 {
-    public function index(){
-
-        $comentatios = Comentario::all();
-        return response()->json([
-            "comentatios"      =>  $comentatios
-        ]);
-    }
-
+    //adicionar um comentário
     public function store(Request $request){
 
         $comentario = new Comentario();
@@ -34,6 +27,41 @@ class ComentarioController extends Controller
             return response()->json([
                 "success"    =>  false,
                 "message"   =>  $e->getMessage()
+            ]);
+        }
+    }
+
+    //listar comentários de um post_id
+    public function show($post_id){
+
+        $comentario = Comentario::where(["post_id"=>$post_id])->get();
+
+        if(!$comentario) {
+            return response()->json([
+                "success"    =>  false,
+                "message"   => "post_id $post_id não foi encontrado",
+            ], 404);
+        }
+        return response()->json([
+            "success"    =>  true,
+            "comentario" => $comentario,
+        ]);
+    }
+
+    //excluir um comentário
+    public function destroy($id){
+
+        $comentario = Comentario::find($id);
+        if(!$comentario) {
+            return response()->json([
+                "success"    =>  false,
+                "message"   => "id $id não foi encontrado",
+            ], 404);
+        }
+        if($comentario->delete()){
+            return response()->json([
+                "success"    =>  true,
+                "message" => "Comentario $id removido com sucesso"
             ]);
         }
     }
