@@ -8,11 +8,21 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
         //$posts = Post::paginate(15);
         //$posts = Post::all();
 
-        $posts = Post::with(['Comentarios'])->paginate(3);
+        $buscar = $request->get('buscar');
+
+        $where = [
+            ['titulo', 'like',"%{$buscar}%"]
+        ];
+
+        $orWhere = [
+            ['descricao', 'like',"%{$buscar}%"]
+        ];
+
+        $posts = Post::with(['Comentarios'])->where($where)->orWhere($orWhere)->orderBy('id','desc')->paginate(3);
         //$posts = Post::with(['Comentarios'])->get();
 
         //$comentarios = Post::find(1)->Comentarios;
