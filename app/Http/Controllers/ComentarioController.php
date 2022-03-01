@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class ComentarioController extends Controller
 {
-    //adicionar um comentário
     public function store(Request $request){
 
         $comentario = new Comentario();
@@ -31,7 +30,6 @@ class ComentarioController extends Controller
         }
     }
 
-    //listar comentários de um post_id
     public function show($post_id){
 
         $comentario = Comentario::where(["post_id"=>$post_id])->get();
@@ -48,7 +46,6 @@ class ComentarioController extends Controller
         ]);
     }
 
-    //excluir um comentário
     public function destroy($id){
 
         $comentario = Comentario::find($id);
