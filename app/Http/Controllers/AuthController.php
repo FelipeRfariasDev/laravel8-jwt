@@ -83,7 +83,7 @@ class AuthController extends Controller
             'expiresInSeconds' => auth()->factory()->getTTL() * 3600,
             'expiresInMinutes' => 60,
             'dateTimeInitial' => $dateTimeTnitialFormatada,
-            'dataTimeFinal' => $dataTimeFinalFormatada,
+            'dateTimeFinal' => $dataTimeFinalFormatada,
             'dateTimeStampInitial' => $dateTime->getTimestamp(),
             'dateTimeStampFinal' => $dateTime->getTimestamp()+3600
         ]);

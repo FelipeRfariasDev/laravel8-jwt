@@ -9,8 +9,6 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     public function index(Request $request){
-        //$posts = Post::paginate(15);
-        //$posts = Post::all();
 
         $buscar = $request->get('buscar');
 
@@ -23,24 +21,7 @@ class PostController extends Controller
         ];
 
         $posts = Post::with(['Comentarios'])->where($where)->orWhere($orWhere)->orderBy('id','desc')->paginate(3);
-        //$posts = Post::with(['Comentarios'])->get();
-
-        //$comentarios = Post::find(1)->Comentarios;
-        //print_r($comentarios);
-        //exit;
-
-        /*
-        foreach($posts as $post){
-            print_r($post->titulo);
-
-            //print_r($post->comentario);
-
-            foreach($post->comentario as $comentario){
-                print_r($comentario->descricao);
-            }
-        }
-        exit;
-        */
+        
         return response()->json([
             "posts"      =>  $posts
         ]);
